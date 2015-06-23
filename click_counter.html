@@ -67,7 +67,7 @@
 
 			function EndCt(){
 				counterBtn.onclick = "";
-				res.innerHTML = counter.innerHTML + " clicks in " + timelimit + " seconds . Average of " + Number(counter.innerHTML)/timelimit;
+				res.innerHTML = counter.innerHTML + " clicks in " + timelimit + " seconds . Average of " + (Number(counter.innerHTML)/timelimit).toFixed(2);
 			}
 
 			function SetTl(){
