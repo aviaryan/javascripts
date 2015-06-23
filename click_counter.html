@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<title>Click Counter</title>
+		<script>
+			// Parameters
+			var timelimit = 15;
+		</script>
+
+		<style>
+			.nb {
+				font-weight: normal;
+			}
+			div#app {
+				width: 600px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 20px;
+				background: #B7D36A;
+				padding: 50px 50px 100px 50px;
+				border-radius: 5em;
+			}
+			button#ctb { width: 120px;}
+		</style>
+	</head>
+
+	<body>
+		<h1 align=center>Click Counter</h1>
+		<hr>
+		<br>
+		
+		<div id="app">
+
+		<h3 class="nb">Clicking on the left-side button will start the counter. Then continue clicking on it to record your clicks.</h3>
+
+		<br><br>
+
+		<button id="ctb"><font size="+5" id="ct">0</font></button>
+		<font size="+5" id="tl" style="float: right;"></font>
+		</h1>
+
+		<div style="margin-top: 100px;">Result : <span id="res"></span><br><br>
+		<button onclick="resetCt();">Reset</button></div>
+
+		</div>
+		
+		<script type="text/javascript">
+
+			document.getElementById("tl").innerHTML = timelimit;
+
+			var counter = document.getElementById("ct");
+			var counterBtn = document.getElementById("ctb");
+			var result = document.getElementById("res");
+			var timeleft = document.getElementById("tl");
+			var mto, ito;
+
+			var onclick_event = function(){
+				if (counter.innerHTML == "0"){
+					mto = setTimeout(EndCt, timelimit * 1000);
+					timeleft.innerHTML = timelimit;
+					ito = setTimeout(SetTl, 1000);
+					document.getElementById("res").innerHTML = "";
+				}
+				counter.innerHTML = Number(counter.innerHTML)+1;
+			};
+
+			counterBtn.onclick = onclick_event;
+
+			function EndCt(){
+				counterBtn.onclick = "";
+				res.innerHTML = counter.innerHTML + " clicks in " + timelimit + " seconds . Average of " + Number(counter.innerHTML)/20;
+			}
+
+			function SetTl(){
+				if (timeleft.innerHTML == "1"){
+					timeleft.innerHTML = "0";
+					return;
+				}
+				timeleft.innerHTML = Number(timeleft.innerHTML)-1;
+				ito = setTimeout(SetTl, 1000);
+			}
+
+			function resetCt(){
+				counter.innerHTML = 0;
+				timeleft.innerHTML = timelimit;
+				counterBtn.onclick = onclick_event;
+				clearTimeout(mto);
+				clearTimeout(ito);
+			}
+
+		</script>
+	
+
+	</body>
+</html>
