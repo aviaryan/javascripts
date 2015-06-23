@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>Click Counter</title>
+		<meta name="viewport" content="width=device-width">
 		<script>
 			// Parameters
 			var timelimit = 15;
@@ -11,22 +12,24 @@
 				font-weight: normal;
 			}
 			div#app {
-				width: 600px;
+				max-width: 500px;
+				width: 95%;
+				width: inherit;
 				margin-left: auto;
 				margin-right: auto;
-				margin-top: 20px;
+				margin-top: 3em;
 				background: #B7D36A;
-				padding: 50px 50px 100px 50px;
+				padding: 2em 3em 3em 3em;
 				border-radius: 5em;
+				font-size: 16px;
 			}
-			button#ctb { width: 120px;}
+			button#ctb { width: 8em; }
 		</style>
 	</head>
 
 	<body>
 		<h1 align=center>Click Counter</h1>
 		<hr>
-		<br>
 		
 		<div id="app">
 
@@ -38,7 +41,7 @@
 		<font size="+5" id="tl" style="float: right;"></font>
 		</h1>
 
-		<div style="margin-top: 100px;">Result : <span id="res"></span><br><br>
+		<div style="margin-top: 5em;">Result : <span id="res"></span><br><br>
 		<button onclick="resetCt();">Reset</button></div>
 
 		</div>
