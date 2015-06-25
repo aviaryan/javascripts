@@ -1,0 +1,53 @@
+div#app {
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2em;
+	padding: 2em 1em 3em 1em;
+	border-radius: 5em;
+	font-size: 16px;
+}
+
+#list {
+	max-width: 800px;
+	margin: 1em auto auto auto;
+	line-height: 2.3em;
+}
+
+#list b {
+	font-size: 18px;
+	background: #BA4B4B;
+	padding: 0.2em 0.2em 0.2em 0.2em;
+	margin: 1em 0.5em 1em 0.5em;
+	white-space: nowrap;
+}
+
+#list b:hover {
+	cursor: pointer;
+}
+
+#fieldName {
+	padding: 0.4em 1em 0.4em 1em;
+	background-color: black;
+	color: white;
+	margin-bottom: 2em;
+	font-size: 18px;
+}
+
+#fieldInputs {
+	margin-bottom: 1.5em;
+}
+
+#fieldInputs input {
+	margin-left: 1em;
+}
+
+#result {
+	margin-top: 1em;
+	background-color: #CDEA2D;
+	padding: 0.4em 1em 0.4em 1em;
+}
+
+#output {
+	width: 100%;
+}

@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>My Math Page</title>
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<!-- 
+TODO:
+result array to store results
+big int
+Add more functions
+-->
+
+<body>
+	
+	<h1 align="center">My Math Page</h1>
+	<hr><br>
+	
+	<div id="list">
+		<b id="fac">Factorial</b>
+		<b id="evalexp">Evaluate expression</b>
+		<b id="ncr">Combinations (nCr)</b>
+		<b id="isPrime">Check for Primality</b>
+		<b id="listFactors">List Factors of N</b>
+	</div>
+
+	<div id="app">
+		<div id="fieldName"></div>
+		<div id="fieldInputs"></div>
+		<div id="result">
+			Result : <br><br>
+			<textarea id="output" disabled="True" rows="4"></textarea>
+		</div>
+	</div>
+
+	
+	<!-- JSes -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="../assets/jquery-1.11.2.min.js"><\/script>')</script>
+	<script src="script.js"></script>
+	<script>
+		showField("fac");
+	</script>
+</body>
+</html>
