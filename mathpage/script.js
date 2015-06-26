@@ -49,6 +49,7 @@ var ncrObj = ["N", "R"];
 var isPrimeObj = ["Number"];
 var listFactorsObj = ["Number"];
 var primeFactorObj = ["Number"];
+var primeRangeObj = ["Start Number", "End Number"];
 
 ////////////
 // FUNCTIONS
@@ -95,7 +96,7 @@ function isPrime_(n){
 	else {
 		var f = 5;
 		var r = Math.sqrt(n);
-		while (f < r){
+		while (f <= r){
 			if (n % f == 0)
 				return 0;
 			if (n % (f+2) == 0)
@@ -147,4 +148,13 @@ function primeFactor(n){
 
 	if (s.indexOf(" ") == 0) s = s.slice(3);
 	return s;
+}
+
+function primeRange(a, b){
+	var s = "";
+	for (var i = a; i <= b; i++){
+		if (isPrime_(i))
+			s += ", " + i;
+	}
+	return s.slice(2);
 }
