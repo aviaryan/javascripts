@@ -48,6 +48,7 @@ var evalexpObj = ["Expression"];
 var ncrObj = ["N", "R"];
 var isPrimeObj = ["Number"];
 var listFactorsObj = ["Number"];
+var primeFactorObj = ["Number"];
 
 ////////////
 // FUNCTIONS
@@ -116,4 +117,34 @@ function listFactors(n){
 		}
 	};
 	return str + str2.slice(2);
+}
+
+function primeFactor(n){
+	var s = "", c = 0;
+	if (n%2 == 0){
+		while (n % 2 == 0){
+			n = n/2; c++;
+		};
+		if (c>1)
+			s += 2 + "^" + c;
+		else
+			s += 2;
+	}
+	var l = Math.round( Math.sqrt(n) );
+	for (var i = 3; i<l; i+=2){
+		if (n%i == 0){
+			c = 0;
+			while (n%i == 0){
+				n=n/i; c++;
+			};
+			if (c>1)
+				s += " * " + i + "^" + c;
+			else
+				s += " * " + i;
+		}
+	}
+	if (n > 1){ s+= " * " + n; }
+
+	if (s.indexOf(" ") == 0) s = s.slice(3);
+	return s;
 }
