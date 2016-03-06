@@ -18,6 +18,7 @@ function showField(o){
 	var obj = window[o + "Obj"];
 	fieldName.innerHTML = $("b#" + o).text();
 	fieldInputs.innerHTML = "";
+	output.value = "";
 	for (var i = 0; i < obj.length; i++){
 		fieldInputs.innerHTML += "<p>" + "<label for=in" + i + ">" + obj[i] + "</label>"
 			+ "<input type=text name=in" + i + ">" + "</p>";
