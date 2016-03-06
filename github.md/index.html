@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>GitHub Preview</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <!-- https://github.com/sindresorhus/github-markdown-css/blob/gh-pages/github-markdown.css -->
+    <link rel="stylesheet" type="text/css" href="github-markdown.css">
+    <meta name="author" content="Avi Aryan">
+    <link rel="author" href="https://plus.google.com/u/0/+AviAryan/posts">
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+
+<div id="header">
+    <h1>GitHub Markdown Preview</h1>
+</div>
+
+<div id="content">
+    <label for="repo-name">Repo name : </label>
+    <input type="text" name="repo" value="aviaryan/Clipjump" id="repo-name">
+
+    <div id="flex-container">
+        <div id="left-seg">
+            <textarea name="md" id="input-markdown" rows="15"># Hello World</textarea>
+            <button onclick="refreshPreview();" id="btnSubmit">Refresh</button>
+        </div>
+        <div id="right-seg">
+            <div id="output-html" class="markdown-body">
+                <h1>Hello World</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- include libs -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>if (!window.jQuery) { document.write('<script src="../assets/jquery-1.11.2.min.js"><\/script>'); }</script>
+
+<script>
+    /**
+     * Calls the github API and refreshes the markdown preview
+     */
+    $(document).ready(function(){});
+
+    function refreshPreview() {
+        var api_url = 'https://api.github.com/markdown';
+        $.ajax({
+            type: "POST",
+            url: api_url,
+            data: JSON.stringify({
+                "text": $("#input-markdown").get(0).value,
+                "mode": "gfm",
+                "context": "aviaryan/Clipjump"
+            }),
+            async: true,
+            process_data: false,
+            error: function (jqXHR, textStatus, error) {
+                console.log(jqXHR, textStatus, error);
+            },
+            success: function (data) {
+                console.log("success!");
+                console.log(data);
+                $("#output-html").get(0).innerHTML = data;
+            }
+        });
+    }
+</script>
+</body>
+</html>
