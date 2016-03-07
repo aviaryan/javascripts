@@ -23,6 +23,7 @@
         <div id="left-seg">
             <textarea name="md" id="input-markdown" rows="15" cols="55"># Hello World</textarea>
             <button onclick="refreshPreview();" id="btnSubmit">Refresh</button>
+            <button id="btnPrint" onclick="window.print();">Print</button>
         </div>
         <div id="right-seg">
             <div id="output-html" class="markdown-body">
@@ -36,41 +37,6 @@
 <!-- include libs -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>if (!window.jQuery) { document.write('<script src="../assets/jquery-1.11.2.min.js"><\/script>'); }</script>
-
-<script>
-    /**
-     * Calls the github API and refreshes the markdown preview
-     */
-    $(document).ready(function(){});
-
-    function refreshPreview() {
-        var api_url = 'https://api.github.com/markdown';
-        $.ajax({
-            type: "POST",
-            url: api_url,
-            data: JSON.stringify({
-                "text": $("#input-markdown").get(0).value,
-                "mode": "gfm",
-                "context": $("#repo-name").get(0).value
-            }),
-            async: true,
-            process_data: false,
-            beforeSend: function (jqXHR, PlainObject) {
-                $("#btnSubmit").get(0).textContent = 'Loading..';
-            },
-            error: function (jqXHR, textStatus, error) {
-                console.log(jqXHR, textStatus, error);
-            },
-            success: function (data) {
-                console.log("success!");
-                console.log(data);
-                $("#output-html").get(0).innerHTML = data;
-            },
-            complete: function (jqXHR, textStatus) {
-                $("#btnSubmit").get(0).textContent = 'Refresh';
-            }
-        });
-    }
-</script>
+<script src="script.js"></script>
 </body>
 </html>

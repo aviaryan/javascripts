@@ -28,7 +28,6 @@ html, body {
     /* width: calc(100% - 1rem); /** css 3 baby **/
     font-family: Consolas;
     border-radius: 0.3rem;
-    resize: both;
 }
 
 #btnSubmit {
@@ -58,4 +57,39 @@ html, body {
     flex: 9999;
     display: flex;
     flex-direction: column;
+}
+
+/**
+DESIGN
+**/
+
+button {
+    background-color: gainsboro;
+    padding: 0.5em;
+    border-radius: 0.2em;
+    border: 1px solid gray;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+/*
+PRINT
+http://stackoverflow.com/a/7167406/2295672
+*/
+@media print {
+    #output-html {
+        background-color: white;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 15px;
+        font-size: 14px;
+        line-height: 18px;
+        border: 0px;
+    }
 }
