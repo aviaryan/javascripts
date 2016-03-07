@@ -22,7 +22,7 @@ html, body {
 }
 
 #input-markdown {
-    font-size: 16px;
+    font-size: 13px;
     display: block;
     margin-right: 1rem;
     /* width: calc(100% - 1rem); /** css 3 baby **/
