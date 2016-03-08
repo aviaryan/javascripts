@@ -23,11 +23,11 @@ function refreshPreview() {
         },
         success: function (data) {
             console.log("success!");
-            console.log(data);
             $("#output-html").get(0).innerHTML = data;
         },
         complete: function (jqXHR, textStatus) {
             $("#btnSubmit").get(0).textContent = 'Refresh';
+            console.log('Calls remaining ' + jqXHR.getResponseHeader('X-RateLimit-Remaining'));
         }
     });
 }
