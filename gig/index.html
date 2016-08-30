@@ -10,12 +10,6 @@
 	<meta name="author" content="Avi Aryan">
 	<link rel="author" href="https://plus.google.com/u/0/+AviAryan/posts">
 	<style>
-	#canvas {
-		background: #8E0E00;
-		background: -webkit-linear-gradient(to left, #8E0E00 , #1F1C18);
-		background: linear-gradient(to left, #8E0E00 , #1F1C18);       
-	}
-
 	.page-header {
 		margin-bottom: 4rem;
 	}
@@ -81,6 +75,24 @@
 	}
 
 	/*
+	Set gradient in canvas
+	*/
+	function setGradient(css){
+		var canvas = document.getElementById("canvas");
+		var pat = /linear\-gradient.*(\#[a-z0-9]+).*(\#[a-z0-9]+)/i;
+		m = pat.exec(css);
+		if (!m){
+			throw new CssException();
+		}
+		var ctx = canvas.getContext('2d');
+		var grd = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+		grd.addColorStop(0, m[2]);
+		grd.addColorStop(1, m[1]);
+		ctx.fillStyle = grd;
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+	}
+
+	/*
 	 * Updates the canvas with the settings specified in the form
 	*/
 	function updateCanvas(){
@@ -91,31 +103,22 @@
 			var height = document.getElementById("height_val").value;
 			var css = document.getElementById("css_text").value;
 
-			// canvas.setAttribute("style", css);
 			canvas.width = width;
 			canvas.height = height;
-
-			var pat = /linear\-gradient.*(\#[a-z0-9]+).*(\#[a-z0-9]+)/i;
-			m = pat.exec(css);
-			if (!m){
-				throw new CssException();
-			}
-			var ctx = canvas.getContext('2d');
-			var grd = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-			grd.addColorStop(0, m[2]);
-			grd.addColorStop(1, m[1]);
-			ctx.fillStyle = grd;
-			ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+			setGradient(css);
 		} catch (e) {
 			console.log('Error ' + e.message);
 		}
-
 		// block default action
 		return false;
 	}
 
-
+	// set initial canvas
+	setGradient(
+		"background: #8E0E00;"
+		+ "background: -webkit-linear-gradient(to left, #8E0E00 , #1F1C18);"
+		+ "background: linear-gradient(to left, #8E0E00 , #1F1C18);"
+	)
 </script>
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
