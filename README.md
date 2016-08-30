@@ -13,6 +13,8 @@ A repository for the javascript apps I will build while learning it.
 
 ### [Gradient Image Generator (GIG)](http://aviaryan.github.io/javascripts/gig/)
 
+http://gig.aavi.me
+
 * A tool to convert CSS gradients to image files.
 * Height and Width of the image can be set by the user.
 * Best when used with http://uigradients.com
