@@ -11,6 +11,13 @@ A repository for the javascript apps I will build while learning it.
 * Shortlink is http://is.gd/githubmd
 
 
+### [Gradient Image Generator (GIG)](http://aviaryan.github.io/javascripts/gig/)
+
+* A tool to convert CSS gradients to image files.
+* Height and Width of the image can be set by the user.
+* Best when used with http://uigradients.com
+
+
 ### [My Math Page](http://aviaryan.github.io/javascripts/mathpage/)
 
 * A multi-functional page built mainly to assist in solving Maths programming problems.

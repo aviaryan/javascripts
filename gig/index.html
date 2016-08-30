@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gradient Image Generator (GIG)</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<meta name="author" content="Avi Aryan">
+	<link rel="author" href="https://plus.google.com/u/0/+AviAryan/posts">
+	<style>
+	#canvas {
+		background: #8E0E00; /* fallback for old browsers */
+		background: -webkit-linear-gradient(to left, #8E0E00 , #1F1C18);  Chrome 10-25, Safari 5.1-6 
+		background: linear-gradient(to left, #8E0E00 , #1F1C18); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */        
+	}
+
+	.page-header {
+		margin-bottom: 4rem;
+	}
+
+	#help_text {
+		padding-bottom: 2rem;
+	}
+	</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="page-header">
+	<h1 class="text-center">Gradient Image Generator
+		<small><a href="http://uigradients.com">http://uigradients.com</a></small>
+	</h1>
+</div>
+
+<div class="row">
+
+	<div class="col-md-4">
+		<form onsubmit="return updateCanvas();">
+			<div class="form-group">
+				<label for="width_val">Width</label>
+				<input class="form-control" type="number" name="width" id="width_val" value="600" />
+			</div>
+			<div class="form-group">
+				<label for="height_val">Height</label>
+				<input class="form-control" type="number" name="height" id="height_val" value="400" />
+			</div>
+			<div class="form-group">
+				<label for="css_text">CSS</label>
+				<textarea class="form-control" name="css" rows="5" id="css_text" placeholder="Paste the CSS code here"></textarea>
+			</div>
+
+			<button type="submit" class="btn btn-default">Update</button>
+		</form>
+	</div>
+
+	<div class="col-md-8 text-center">
+		<div id="help_text">
+			<small>Right-click the pattern and click "Save image as..."</small>
+		</div>
+		<canvas id="canvas" width="600" height="400"></canvas>
+	</div>
+
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+
+
+	/* 
+	 * Custom exception class for un-supported CSS
+	*/
+	function CssException() {
+	   this.message = "Something is wrong with the CSS";
+	   this.name = "CssException";
+	}
+
+	/*
+	 * Updates the canvas with the settings specified in the form
+	*/
+	function updateCanvas(){
+		try {
+			var canvas = document.getElementById("canvas");
+
+			var width = document.getElementById("width_val").value;
+			var height = document.getElementById("height_val").value;
+			var css = document.getElementById("css_text").value;
+
+			// canvas.setAttribute("style", css);
+			canvas.width = width;
+			canvas.height = height;
+
+			var pat = /linear\-gradient.*(\#[a-z0-9]+).*(\#[a-z0-9]+)/i;
+			m = pat.exec(css);
+			if (!m){
+				throw new CssException();
+			}
+			var ctx = canvas.getContext('2d');
+			var grd = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+			grd.addColorStop(0, m[2]);
+			grd.addColorStop(1, m[1]);
+			ctx.fillStyle = grd;
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+		} catch (e) {
+			console.log('Error ' + e.message);
+		}
+
+		// block default action
+		return false;
+	}
+
+
+</script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+</body>
+
+
+</html>
