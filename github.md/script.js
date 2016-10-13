@@ -31,3 +31,12 @@ function refreshPreview() {
         }
     });
 }
+
+$(document).bind('keydown', 'ctrl+shift+p', function(e){
+e.preventDefault();
+refreshPreview();
+});
+$("textarea").bind('keydown', 'ctrl+shift+p', function(e){
+e.preventDefault();
+refreshPreview();
+});
