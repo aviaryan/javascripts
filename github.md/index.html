@@ -22,7 +22,9 @@
     <div id="flex-container">
         <div id="left-seg">
             <textarea name="md" id="input-markdown" rows="15" cols="65"># Hello World</textarea>
-            <button onclick="refreshPreview();" id="btnSubmit">Refresh</button>
+            <button onclick="refreshPreview();" id="btnSubmit" title="Reloads the preview. You can also use Ctrl-Shift-P for this.">
+                Refresh
+            </button>
             <button id="btnPrint" onclick="window.print();">Print</button>
         </div>
         <div id="right-seg">
